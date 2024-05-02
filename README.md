@@ -38,8 +38,4 @@ pip install -r requirements.txt
 
 ## Auteurs
 
-Ce projet a été réalisé par [Votre nom].
-
-## Licence
-
-Ce projet est sous licence MIT - voir le fichier `LICENSE` pour plus de détails.
+Ce projet a été réalisé par BERAKNI Yacine.
