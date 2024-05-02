@@ -18,7 +18,8 @@ Avant d'utiliser ce programme, assurez-vous d'avoir les éléments suivants inst
 ## Installation des dépendances
 
 Pour installer les dépendances, exécutez la commande suivante :
-  ```pip install -r requirements.txt
+  ```
+pip install -r requirements.txt
   ```
 
 ## Utilisation
