@@ -1,4 +1,5 @@
 from __init__ import *
+from utils import calculate_similarity 
 
 def telecharger_articles_arxiv(sujet, nb_resultats):
     """
@@ -68,6 +69,13 @@ def telecharger_articles_arxiv(sujet, nb_resultats):
     # Créer un DataFrame pandas à partir de toutes les données
     noms_colonnes = ['Titre', 'Auteur', 'Date', 'URL', 'Résumé', 'DOI', 'Journal', 'Catégories']
     df = pd.DataFrame(toutes_les_donnees, columns=noms_colonnes)
+
+    # Calcul de la similarité cosinus entre les mots-clés et les titres des articles
+    similarity_scores = calculate_similarity(sujet, df['Titre'].tolist())
+    df['Similarité_Cosinus'] = similarity_scores
+
+    # Tri des articles en fonction de la similarité cosinus
+    df = df.sort_values(by='Similarité_Cosinus', ascending=False)
     
     # Enregistrer les données dans un fichier CSV avec le nom du dossier
     chemin_fichier_csv = os.path.join(nom_dossier, f"{nom_dossier}.csv")
