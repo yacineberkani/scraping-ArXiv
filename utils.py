@@ -64,3 +64,22 @@ def detect_language(text):
         return 'français'
     else:
         return 'anglais'
+def calculate_similarity(keyword, article_titles):
+    """
+    Calcule la similarité cosinus entre un mot-clé et les titres des articles.
+    
+    Args:
+        keyword (str): Le mot-clé à comparer.
+        article_titles (list): Une liste de titres d'articles.
+        
+    Returns:
+        array: Un tableau de similarités.
+    """
+    keyword_vector = [keyword]
+    corpus = keyword_vector + article_titles
+    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
+    keyword_tfidf_vector = tfidf_matrix[0]
+    article_titles_tfidf_matrix = tfidf_matrix[1:]
+    cosine_similarities = cosine_similarity(keyword_tfidf_vector, article_titles_tfidf_matrix)
+    return cosine_similarities.flatten()
